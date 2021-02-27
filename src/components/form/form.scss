@@ -1,0 +1,292 @@
+@mixin fl-row-no-wrap{
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.form-title{
+  color: rgba(0, 0, 0, 0.48);
+  font-size: small;
+}
+
+.form-item{
+  font-weight: bold;
+}
+
+.salary-form{
+  margin: 10px;
+}
+
+.salary-mode-option{
+  @include fl-row-no-wrap;
+  height: 22px;
+
+  .radio-button{
+    @include fl-row-no-wrap;
+    align-items: center;
+  }
+}
+
+.salary-value{
+  @include fl-row-no-wrap;
+  align-items: center;
+  gap: 5px;
+  max-width: 220px;
+  margin-left: 30px;
+  margin-top: 10px;
+
+  input{
+    font-weight: bold;
+    padding: 7px 18px;
+    height: 19px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 30px;
+    outline: 0;
+    background-color: transparent;
+    font-size: 16px;
+    width: 111px;
+  }
+
+  label{
+    white-space: nowrap;
+  }
+
+  input.salary-value-number::-webkit-outer-spin-button,
+  input.salary-value-number::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input.salary-value-number[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  .salary-value-number{
+    border-radius: 40px;
+  }
+}
+
+.form-info{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  background: #f9e8b6;
+  height: 110px;
+  padding: 10px;
+}
+
+
+//override standard radio-button styles
+.radio-button {
+  cursor: pointer;
+  padding-right: 10px;
+}
+input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.radio-button__input {
+  opacity: 0;
+  position: absolute;
+}
+
+.radio-button__control {
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 12px;
+  vertical-align: middle;
+  background-color: inherit;
+  color: #017b5f;
+  border: 2px solid #666;
+  border-radius: 24px;
+}
+
+.radio-button__input:checked+.radio-button__control:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 12px;
+}
+
+.radio-button__input:checked+.radio-button__control {
+  border-color: black;
+}
+
+
+//tooltip
+
+.tooltip {
+  align-self: center;
+  box-sizing: border-box;
+  font-weight: initial;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 50%;
+  text-align: center;
+
+  .tooltip-icon{
+    position: relative;
+    right: -0.3px;
+    bottom: 0.6px;
+    width: 13px;
+    height: 13px;
+    font-size: 12px;
+  }
+ }
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  font-size: 12px;
+  visibility: hidden;
+  width: 120px;
+  background-color: #808bd8;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 2px 2px 2px 2px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  top: 140%;
+  left: 50%;
+  margin-left: 0;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+//tooltip add classes
+
+.tp-closed{
+  .tooltiptext{
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.tp-opened{
+
+  .tp-clicked{
+    bottom: 2px;
+  }
+
+  //text visible when opened
+  .tooltiptext{
+    visibility: visible;
+    opacity: 1;
+  }
+
+  //tooltip arrow when opened
+  .tooltiptext::after{
+    content: "";
+    position: absolute;
+    bottom: 98%;
+    left: 0;
+    margin-left: 0px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent transparent #808bd8 #808bd8;
+    transform: scaleY(1.5);
+  }
+}
+
+//switcher styles
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 18px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #f3a903;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #f3a903;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(7px);
+  -ms-transform: translateX(7px);
+  transform: translateX(7px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 10px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.ndfl{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  margin-left: 30px;
+  margin-top: 10px;
+  height: 22px;
+  font-size: 12px;
+
+  .inactive-title{
+    opacity: 0.5;
+  }
+
+  .with-ndfl-title{
+    white-space: nowrap;
+  }
+
+  .without-ndfl-title{
+    white-space: nowrap;
+  }
+}
